@@ -1,0 +1,3 @@
+This Vagrantfile is based on ubuntu/xenial with inline Shell provision. OpenJDK 1.8 and Tomcat 8 installed.
+
+Port forwarding: Host 8081 --> Guest 8080(Tomcat)
