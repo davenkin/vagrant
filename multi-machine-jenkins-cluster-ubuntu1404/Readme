@@ -1,0 +1,14 @@
+Run: 
+vagrant up
+to start all these three machines:
+
+Networking:private_network
+Master:192.168.2.2
+Slave1:192.168.2.3
+Slave2:192.168.2.4
+
+After provision, slaves will need to be manually added into Jenkins.
+
+You can access http://192.168.2.2:8080 for Jenkins homepage from you host machine.
+
+The Jenkins master will do work using a user named "jenkins", so in order to SSH from master to slave, you need to add the public key of user "jenkins" to the account on slave that you want to SSH as.
