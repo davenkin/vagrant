@@ -1,0 +1,37 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.define "server" do |server|
+      server.vm.network "private_network", ip: "192.168.3.2"
+      server.vm.provider "virtualbox" do |v|
+        v.name = "go-server"
+      end
+
+      server.vm.provision :ansible do |ansible|
+        ansible.playbook = "server_playbook.yml"
+      end
+  end
+
+  config.vm.define "agent1" do |agent1|
+      agent1.vm.network "private_network", ip: "192.168.3.3"
+      agent1.vm.provider "virtualbox" do |v|
+        v.name = "go-agent1"
+      end
+
+      agent1.vm.provision :ansible do |ansible|
+        ansible.playbook = "agent_playbook.yml"
+      end
+  end
+
+  config.vm.define "agent2" do |agent2|
+      agent2.vm.network "private_network", ip: "192.168.3.4"
+      agent2.vm.provider "virtualbox" do |v|
+        v.name = "go-agent2"
+      end
+
+      agent2.vm.provision :ansible do |ansible|
+        ansible.playbook = "agent_playbook.yml"
+      end
+  end
+
+end

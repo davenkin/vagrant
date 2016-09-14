@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: test
+      command: pwd

@@ -1,0 +1,3 @@
+This is a helloword of vagrant and ansible combination.
+
+You just write a simple playbook.yml and wire it in Vagrant file, everything else is handled by vagrant. For more details, please see .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory, the magic is there.
