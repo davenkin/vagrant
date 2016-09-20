@@ -1,0 +1,8 @@
+---
+- name: install jdk
+  apt: pkg=default-jdk state=present
+
+- name: install go sever
+  apt: pkg=go-server state=present
+  notify:
+    - start go server

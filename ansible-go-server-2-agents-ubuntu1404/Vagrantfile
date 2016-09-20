@@ -1,37 +1,49 @@
+GO_SERVER_IP="192.168.3.2"
+GO_AGENT1_IP="192.168.3.3"
+GO_AGENT2_IP="192.168.3.4"
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.define "server" do |server|
-      server.vm.network "private_network", ip: "192.168.3.2"
+      server.vm.hostname = "goserver"
+      server.vm.network "private_network", ip: GO_SERVER_IP
       server.vm.provider "virtualbox" do |v|
         v.name = "go-server"
+        v.memory = 1024
+        v.cpus = 2
       end
 
       server.vm.provision :ansible do |ansible|
-        ansible.playbook = "server_playbook.yml"
+        ansible.playbook = "ansible/server_playbook.yml"
       end
   end
 
   config.vm.define "agent1" do |agent1|
-      agent1.vm.network "private_network", ip: "192.168.3.3"
+      agent1.vm.hostname = "goagent1"
+      agent1.vm.network "private_network", ip: GO_AGENT1_IP
       agent1.vm.provider "virtualbox" do |v|
         v.name = "go-agent1"
+        v.memory = 1024
       end
 
       agent1.vm.provision :ansible do |ansible|
-        ansible.playbook = "agent_playbook.yml"
+        ansible.playbook = "ansible/agent_playbook.yml"
       end
   end
 
   config.vm.define "agent2" do |agent2|
-      agent2.vm.network "private_network", ip: "192.168.3.4"
+      agent2.vm.hostname = "goagent2"
+      agent2.vm.network "private_network", ip: GO_AGENT2_IP
       agent2.vm.provider "virtualbox" do |v|
         v.name = "go-agent2"
+        v.memory = 1024
       end
 
       agent2.vm.provision :ansible do |ansible|
-        ansible.playbook = "agent_playbook.yml"
+        ansible.playbook = "ansible/agent_playbook.yml"
       end
   end
+
 
 end

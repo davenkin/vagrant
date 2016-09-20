@@ -1,0 +1,15 @@
+---
+- name: archieve existing sources.list
+  shell: creates="/etc/apt/sources.list.old" mv /etc/apt/sources.list /etc/apt/sources.list.old
+
+- name: copy new sources.list
+  copy: src=sources.list dest=/etc/apt/ 
+
+- name: add gocd.list
+  shell: creates="/etc/apt/sources.list.d/gocd.list" echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
+
+- name: add gocd apt key
+  shell: curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
+
+- name: update apt cache
+  apt: update_cache=yes

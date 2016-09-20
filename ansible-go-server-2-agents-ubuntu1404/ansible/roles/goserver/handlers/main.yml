@@ -1,0 +1,3 @@
+---
+- name: start go server
+  service: name=go-server state=started

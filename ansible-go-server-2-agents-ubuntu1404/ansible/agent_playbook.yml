@@ -7,4 +7,4 @@
       apt: update_cache=yes
 
     - name: install jdk
-      apt: pkg=default-jdk state=installed
+      apt: pkg=default-jdk state=present
