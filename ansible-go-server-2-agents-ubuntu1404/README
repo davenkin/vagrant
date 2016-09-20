@@ -1,0 +1,7 @@
+This vagrant+ansible project contains 1 go server and 2 go agents.
+
+server:192.168.3.2
+agent1:192.168.3.3
+agent2:192.168.3.4
+
+Just run "vagrant up" to set up the build system. After that open http://192.168.3.2:8153/go to access Go server. The two agents are automatically added, but you need to ENABLE them mannually before build projects.
