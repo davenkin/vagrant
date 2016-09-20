@@ -1,0 +1,11 @@
+---
+- name: install jdk
+  apt: pkg=default-jdk state=present
+
+- name: install go agent
+  apt: pkg=go-agent state=present
+
+- name: 
+  template: src=go-agent dest=/etc/default/go-agent owner=root group=go mode=0640
+  notify:
+    - start go agent

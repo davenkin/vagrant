@@ -1,0 +1,13 @@
+---
+- hosts: servers
+  become: true
+  become_method: sudo
+  roles:
+    - role: goserver
+    - role: git
+- hosts: agents
+  become: true
+  become_method: sudo
+  roles:
+    - role: goagent
+    - role: git
